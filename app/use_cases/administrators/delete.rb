@@ -2,8 +2,8 @@ module UseCases
   module Administrators
     class Delete
 
-      def initialize(administrator_id)
-        @administrator_id = administrator_id
+      def initialize(id)
+        @administrator_id = id
       end
 
       def call

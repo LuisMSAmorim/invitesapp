@@ -2,12 +2,12 @@ module UseCases
   module Administrators
     class Create
 
-      def initialize(administrator_params)
-        @administrator_params = administrator_params
+      def initialize(params)
+        @administrator_params = params
       end
 
       def call
-        user_administrator = User.new(administrator_params)
+        user_administrator = User.new(params)
 
         user_administrator.role = :admin
 

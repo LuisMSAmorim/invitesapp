@@ -2,9 +2,9 @@ module UseCases
   module Administrators
     class Update
 
-      def initialize(administrator_id, administrator_params)
-        @administrator_id = administrator_id
-        @administrator_params = administrator_params
+      def initialize(id, params)
+        @administrator_id = id
+        @administrator_params = params
       end
 
       def call
