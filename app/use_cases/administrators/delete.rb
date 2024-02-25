@@ -1,16 +1,14 @@
-module UseCases
-  module Administrators
-    class Delete
+module Administrators
+  class Delete
 
-      def initialize(id)
-        @administrator_id = id
-      end
+    def initialize(id)
+      @administrator_id = id
+    end
 
-      def call
-        user_administrator = User.find(@administrator_id)
+    def call
+      user_administrator = User.find_by!(id: @administrator_id, role: :admin)
 
-        user_administrator.destroy
-      end
+      user_administrator.destroy
     end
   end
 end

@@ -1,10 +1,8 @@
-module UseCases
-  module Administrators
-    class GetAll
+module Administrators
+  class GetAll
 
-      def call
-        User.where(role: :admin)
-      end
+    def call
+      User.where(role: :admin)
     end
   end
 end

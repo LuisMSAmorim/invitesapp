@@ -1,19 +1,17 @@
-module UseCases
-  module Administrators
-    class Update
+module Administrators
+  class Update
 
-      def initialize(id, params)
-        @administrator_id = id
-        @administrator_params = params
-      end
+    def initialize(id, params)
+      @administrator_id = id
+      @administrator_params = params
+    end
 
-      def call
-        user_administrator = User.find(@administrator_id)
+    def call
+      user_administrator = User.find_by!(id: @administrator_id, role: :admin)
 
-        user_administrator.update(@administrator_params)
+      user_administrator.update(@administrator_params)
 
-        user_administrator
-      end
+      user_administrator
     end
   end
 end
