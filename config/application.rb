@@ -16,7 +16,8 @@ module App
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
-    config.autoload_paths += %W(#{config.root}/app/use_cases)
+    config.autoload_paths << Rails.root.join('use_cases')
+    config.eager_load_paths << Rails.root.join('use_cases')
 
     # Configuration for the application, engines, and railties goes here.
     #
