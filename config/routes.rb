@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :administrators
+  namespace :administrator do
+    resources :users
+  end
 end
