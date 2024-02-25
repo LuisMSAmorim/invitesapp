@@ -1,24 +1,24 @@
-class AdministratorsController < ApplicationController
-
+class Administrator::UsersController < ApplicationController
   before_action :authenticate_user!
+
   before_action :authorize_administrator!
 
   def index
-    @administrators = UseCases::Administrators::GetAll.new.call
+    @users = Administrators::GetAll.new.call
   end
 
   def show
-    @administrator = UseCases::Administrators::GetById.new.call(params[:id])
+    @user = Administrators::GetById.new.call(params[:id])
   end
 
   def edit
-    @administrator = UseCases::Administrators::GetById.new.call(params[:id])
+    @user = Administrators::GetById.new.call(params[:id])
   end
 
   def update
-    @administrator = UseCases::Administrators::Update.new.call(params[:id], update_params)
+    @user = Administrators::Update.new.call(params[:id], update_params)
 
-    if @administrator.persisted?
+    if @user.persisted?
       redirect_to root_path, notice: "Administrator updated successfully"
     else
       render :edit
@@ -26,13 +26,13 @@ class AdministratorsController < ApplicationController
   end
 
   def new
-    @administrator = Administrator.new
+    @user = User.new
   end
 
   def create
-    @administrator = UseCases::Administrators::Create.new.call(create_params)
+    @user = Administrators::Create.new.call(create_params)
 
-    if @administrator.persisted?
+    if @user.persisted?
       redirect_to root_path, notice: "Administrator created successfully"
     else
       render :new
