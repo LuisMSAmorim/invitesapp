@@ -28,4 +28,23 @@ RSpec.describe Administrator::UsersController, type: :controller do
       expect(response).to render_template("index")
     end
   end
+
+  describe "GET #show" do
+    before do
+      allow_any_instance_of(Administrators::GetById).to receive(:call).and_return(admin)
+    end
+    
+    it "returns http success" do
+      get :show, params: { id: admin.id }
+      expect(response).to be_successful
+    end
+    it "assigns @user" do
+      get :show, params: { id: admin.id }
+      expect(assigns(:user)).to eq(admin)
+    end
+    it "renders the show template" do
+      get :show, params: { id: admin.id }
+      expect(response).to render_template("show")
+    end
+  end
 end
