@@ -5,7 +5,7 @@ module Administrators
     end
 
     def call
-      User.find_by!(id: @id, role: :admin)
+      User.find_by(id: @id, role: :admin)
     end
   end
 end
