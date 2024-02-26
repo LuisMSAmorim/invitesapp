@@ -33,15 +33,15 @@ class Administrator::UsersController < ApplicationController
     @user = Administrators::Create.new(create_params).call
 
     if @user.persisted?
-      redirect_to root_path, notice: "Administrator created successfully"
+      redirect_to administrator_users_path, notice: "Administrator created successfully"
     else
-      render :new, alert: "Administrator could not be created"
+      render :new
     end
   end
 
   def destroy
     Administrators::Delete.new(params[:id]).call
-    redirect_to root_path, notice: "Administrator deleted successfully"
+    redirect_to administrator_users_path, notice: "Administrator deleted successfully"
   end
 
   private
