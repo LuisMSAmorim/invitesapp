@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "#enums" do
+    it { is_expected.to define_enum_for(:role).with_values([:user, :admin]) }
+  end
 end
