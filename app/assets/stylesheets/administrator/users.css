@@ -1,0 +1,57 @@
+.user {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.user h2 {
+  color: #333;
+}
+
+.user-actions {
+  margin-top: 10px;
+}
+
+.user-action-link {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 3px;
+}
+
+.user-action-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.notice {
+  color: green;
+}
+
+h1 {
+  color: #333;
+}
+
+#users {
+  margin-top: 20px;
+}
+
+.new-user-link {
+  display: block;
+  margin-top: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.new-user-link:hover {
+  background-color: #218838;
+}
