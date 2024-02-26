@@ -47,4 +47,23 @@ RSpec.describe Administrator::UsersController, type: :controller do
       expect(response).to render_template("show")
     end
   end
+
+  describe "GET #edit" do
+    before do
+      allow_any_instance_of(Administrators::GetById).to receive(:call).and_return(admin)
+    end
+    
+    it "returns http success" do
+      get :edit, params: { id: admin.id }
+      expect(response).to be_successful
+    end
+    it "assigns @user" do
+      get :edit, params: { id: admin.id }
+      expect(assigns(:user)).to eq(admin)
+    end
+    it "renders the edit template" do
+      get :edit, params: { id: admin.id }
+      expect(response).to render_template("edit")
+    end
+  end
 end
