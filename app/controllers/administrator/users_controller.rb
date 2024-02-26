@@ -8,15 +8,15 @@ class Administrator::UsersController < ApplicationController
   end
 
   def show
-    @user = Administrators::GetById.new.call(params[:id])
+    @user = Administrators::GetById.new(params[:id]).call
   end
 
   def edit
-    @user = Administrators::GetById.new.call(params[:id])
+    @user = Administrators::GetById.new(params[:id]).call
   end
 
   def update
-    @user = Administrators::Update.new.call(params[:id], update_params)
+    @user = Administrators::Update.new(params[:id], update_params).call
 
     if @user.persisted?
       redirect_to root_path, notice: "Administrator updated successfully"
@@ -30,17 +30,17 @@ class Administrator::UsersController < ApplicationController
   end
 
   def create
-    @user = Administrators::Create.new.call(create_params)
+    @user = Administrators::Create.new(create_params).call
 
     if @user.persisted?
       redirect_to root_path, notice: "Administrator created successfully"
     else
-      render :new
+      render :new, alert: "Administrator could not be created"
     end
   end
 
   def destroy
-    Administrators::Delete.new.call(params[:id])
+    Administrators::Delete.new(params[:id]).call
     redirect_to root_path, notice: "Administrator deleted successfully"
   end
 
@@ -53,6 +53,6 @@ class Administrator::UsersController < ApplicationController
   end
 
   def create_params
-    params.require(:administrator).permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 end

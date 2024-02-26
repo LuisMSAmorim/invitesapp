@@ -10,12 +10,9 @@ module Administrators
 
       user_administrator.role = :admin
 
-      if user_administrator.save
-        user_administrator
-      else
-        user_administrator.errors
-      end
+      user_administrator.save!
+
+      user_administrator
     end
   end
 end
-
