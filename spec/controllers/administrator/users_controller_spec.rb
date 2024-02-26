@@ -171,4 +171,15 @@ RSpec.describe Administrator::UsersController, type: :controller do
       end
     end
   end
+
+  describe "DELETE #destroy" do
+    before do
+      allow_any_instance_of(Administrators::Delete).to receive(:call)
+    end
+
+    it "redirects to the index" do
+      delete :destroy, params: { id: admin_mock.id }
+      expect(response).to redirect_to(administrator_users_path)
+    end
+  end
 end
