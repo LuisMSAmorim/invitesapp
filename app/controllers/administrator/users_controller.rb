@@ -39,6 +39,11 @@ class Administrator::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    Administrators::Delete.new.call(params[:id])
+    redirect_to root_path, notice: "Administrator deleted successfully"
+  end
+
   private
 
   def authorize_administrator!
