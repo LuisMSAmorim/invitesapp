@@ -122,4 +122,45 @@ RSpec.describe Administrator::UsersController, type: :controller do
       expect(response).to render_template("new")
     end
   end
+
+  describe "POST #create" do
+    context 'with valid attributes' do
+      let(:params) { { id: admin_mock.id, user: { email: 'testing@email.com', password: "ChangedPassword123@1" } } }
+
+      before do
+        allow_any_instance_of(Administrators::Create).to receive(:call).and_return(admin_mock)
+        allow(admin_mock).to receive_messages(persisted?: true)
+      end
+
+      it "assigns @user" do
+        post :create, params: params
+        expect(assigns(:user)).to eq(admin_mock)
+      end
+      it "redirects to the index" do
+        post :create, params: params
+        expect(response).to redirect_to(administrator_users_path)
+      end
+    end
+    context 'with invalid attributes' do
+      let(:params) { { id: admin_mock.id, user: { email: '', password: "" } } }
+
+      before do
+        allow_any_instance_of(Administrators::Create).to receive(:call).and_return(admin_mock)
+        allow(admin_mock).to receive_messages(persisted?: false)
+      end
+
+      it "returns http success" do
+        post :create, params: params
+        expect(response).to be_successful
+      end
+      it "assigns @user" do
+        post :create, params: params
+        expect(assigns(:user)).to eq(admin_mock)
+      end
+      it "renders the new template" do
+        post :create, params: params
+        expect(response).to render_template("new")
+      end
+    end
+  end
 end
