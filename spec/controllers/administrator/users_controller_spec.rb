@@ -105,6 +105,10 @@ RSpec.describe Administrator::UsersController, type: :controller do
         put :update, params: params
         expect(response).to render_template("edit")
       end
+      it 'flashes an alert' do
+        post :create, params: params
+        expect(flash[:alert]).to be_present
+      end
     end
   end
 
@@ -160,6 +164,10 @@ RSpec.describe Administrator::UsersController, type: :controller do
       it "renders the new template" do
         post :create, params: params
         expect(response).to render_template("new")
+      end
+      it 'flashes an alert' do
+        post :create, params: params
+        expect(flash[:alert]).to be_present
       end
     end
   end
