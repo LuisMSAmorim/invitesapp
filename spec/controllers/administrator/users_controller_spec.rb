@@ -4,7 +4,7 @@ RSpec.describe Administrator::UsersController, type: :controller do
 
   let(:admin) { create(:user, :admin) }
 
-  let(:admin_mock) { instance_double(User, id: 2) }
+  let(:admin_mock) { instance_double(User, id: 2, email: 'johndoe@email.com', password: '1243Testing@!@2') }
 
   before do
     sign_in admin
@@ -64,6 +64,47 @@ RSpec.describe Administrator::UsersController, type: :controller do
     it "renders the edit template" do
       get :edit, params: { id: admin.id }
       expect(response).to render_template("edit")
+    end
+  end
+
+  describe "PUT #update" do
+    context "with valid attributes" do
+      let(:params) { { id: admin_mock.id, user: { email: 'testing@email.com', password: "ChangedPassword123@1" } } }
+
+      before do
+        allow_any_instance_of(Administrators::Update).to receive(:call).and_return(admin_mock)
+        allow(admin_mock).to receive_messages(valid?: true)
+      end
+
+      it "assigns @user" do
+        put :update, params: params
+        expect(assigns(:user)).to eq(admin_mock)
+      end
+      it "redirects to the index" do
+        put :update, params: params
+        expect(response).to redirect_to(administrator_users_path)
+      end
+    end
+    context "with invalid attributes" do
+      let(:params) { { id: admin_mock.id, user: { email: '', password: "" } } }
+
+      before do
+        allow_any_instance_of(Administrators::Update).to receive(:call).and_return(admin_mock)
+        allow(admin_mock).to receive_messages(valid?: false)
+      end
+
+      it "returns http success" do
+        put :update, params: params
+        expect(response).to be_successful
+      end
+      it "assigns @user" do
+        put :update, params: params
+        expect(assigns(:user)).to eq(admin_mock)
+      end
+      it "renders the edit template" do
+        put :update, params: params
+        expect(response).to render_template("edit")
+      end
     end
   end
 end
