@@ -1,6 +1,6 @@
 class Administrator::UsersController < ApplicationController
-  before_action :authenticate_user!
 
+  before_action :authenticate_user!
   before_action :authorize_administrator!
 
   def index
@@ -16,11 +16,12 @@ class Administrator::UsersController < ApplicationController
   end
 
   def update
-    @user = Administrators::Update.new(params[:id], update_params).call
+    @user = Administrators::Update.new(params[:id], administrator_params).call
 
-    if @user.persisted?
-      redirect_to root_path, notice: "Administrator updated successfully"
+    if @user.valid?
+      redirect_to administrator_users_path, notice: "Administrador atualizado com sucesso"
     else
+      flash[:alert] = "Administrador não pode ser atualizado"
       render :edit
     end
   end
@@ -30,29 +31,24 @@ class Administrator::UsersController < ApplicationController
   end
 
   def create
-    @user = Administrators::Create.new(create_params).call
+    @user = Administrators::Create.new(administrator_params).call
 
     if @user.persisted?
-      redirect_to administrator_users_path, notice: "Administrator created successfully"
+      redirect_to administrator_users_path, notice: "Administrador criado com sucesso"
     else
+      flash[:alert] = "Administrador não pode ser criado"
       render :new
     end
   end
 
   def destroy
     Administrators::Delete.new(params[:id]).call
-    redirect_to administrator_users_path, notice: "Administrator deleted successfully"
+    redirect_to administrator_users_path, notice: "Administrador deletado com sucesso"
   end
 
   private
 
-  def authorize_administrator!
-    unless current_user.admin?
-      redirect_to root_path, alert: "You are not authorized to perform this action"
-    end
-  end
-
-  def create_params
+  def administrator_params
     params.require(:user).permit(:email, :password)
   end
 end
