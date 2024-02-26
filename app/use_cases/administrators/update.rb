@@ -2,14 +2,14 @@ module Administrators
   class Update
 
     def initialize(id, params)
-      @administrator_id = id
-      @administrator_params = params
+      @id = id
+      @params = params
     end
 
     def call
-      user_administrator = User.find_by!(id: @administrator_id, role: :admin)
+      user_administrator = User.find_by!(id: @id, role: :admin)
 
-      user_administrator.update(@administrator_params)
+      user_administrator.update(@params)
 
       user_administrator
     end
