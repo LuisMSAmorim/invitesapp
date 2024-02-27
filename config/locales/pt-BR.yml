@@ -67,3 +67,22 @@ pt-BR:
       destroy:
         success: "Empresa excluída com sucesso"
         error: "Erro ao excluir empresa"
+    administrators:
+      users:
+        index:
+          title: "Administradores"
+        create:
+          success: "Administrador criado com sucesso"
+          error: "Erro ao criar administrador"
+        new:
+          title: "Novo administrador"
+          submit: "Criar administrador"
+        edit:
+          title: "Editar administrador"
+          submit: "Atualizar administrador"
+        update:
+          success: "Administrador atualizado com sucesso"
+          error: "Erro ao atualizar administrador"
+        destroy:
+          success: "Administrador excluído com sucesso"
+          error: "Erro ao excluir administrador"      

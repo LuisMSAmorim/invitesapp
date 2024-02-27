@@ -18,11 +18,14 @@ class Administrator::UsersController < ApplicationController
   def update
     @user = Administrators::Update.new(params[:id], administrator_params).call
 
-    if @user.valid?
-      redirect_to administrator_users_path, notice: "Administrador atualizado com sucesso"
-    else
-      flash[:alert] = "Administrador não pode ser atualizado"
-      render :edit
+    respond_to do |format|
+      if @user.valid?
+        format.html { redirect_to administrator_users_path, notice: I18n.t('views.administrators.users.update.success') }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -33,17 +36,20 @@ class Administrator::UsersController < ApplicationController
   def create
     @user = Administrators::Create.new(administrator_params).call
 
-    if @user.persisted?
-      redirect_to administrator_users_path, notice: "Administrador criado com sucesso"
-    else
-      flash[:alert] = "Administrador não pode ser criado"
-      render :new
+    respond_to do |format|
+      if @user.persisted?
+        format.html { redirect_to administrator_users_path, notice: I18n.t('views.administrators.users.created.success') }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     Administrators::Delete.new(params[:id]).call
-    redirect_to administrator_users_path, notice: "Administrador deletado com sucesso"
+    redirect_to administrator_users_path, notice: I18n.t('views.administrators.users.destroy.success')
   end
 
   private
