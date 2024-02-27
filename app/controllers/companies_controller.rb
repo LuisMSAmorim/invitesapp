@@ -18,11 +18,14 @@ class CompaniesController < ApplicationController
   def update
     @company = Companies::Update.new(params[:id], company_params).call
 
-    if @company.valid?
-      redirect_to companies_path, notice: "Empresa atualizada com sucesso"
-    else
-      flash[:alert] = "Empresa não pode ser atualizada"
-      render :edit
+    respond_to do |format|
+      if @company.valid?
+        format.html { redirect_to companies_path, notice: I18n.t('views.companies.update.success') }
+        format.json { render :show, status: :ok, location: @company }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -33,17 +36,20 @@ class CompaniesController < ApplicationController
   def create
     @company = Companies::Create.new(company_params).call
 
-    if @company.persisted?
-      redirect_to companies_path, notice: "Empresa criada com sucesso"
-    else
-      flash[:alert] = "Empresa não pode ser criada"
-      render :new
+    respond_to do |format|
+      if @company.persisted?
+        format.html { redirect_to companies_path, notice: I18n.t('views.companies.create.success') }
+        format.json { render :show, status: :created, location: @company }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     Companies::Delete.new(params[:id]).call
-    redirect_to companies_path, notice: "Empresa deletada com sucesso"
+    redirect_to companies_path, notice: I18n.t('views.companies.destroy.success')
   end
 
   private

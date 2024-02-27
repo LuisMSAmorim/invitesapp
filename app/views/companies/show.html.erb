@@ -1,8 +1,8 @@
 <%= render @company %>
 
 <div>
-  <%= link_to "Edit this company", edit_company_path(@company) %> |
-  <%= link_to "Back to companies", companies_path %>
+  <%= link_to I18n.t('views.common.edit'), edit_company_path(@company) %> |
+  <%= link_to I18n.t('views.common.back'), companies_path %>
 
-  <%= button_to "Destroy this company", @company, method: :delete %>
+  <%= button_to I18n.t('views.common.destroy'), @company, method: :delete %>
 </div>

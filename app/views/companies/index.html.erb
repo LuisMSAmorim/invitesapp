@@ -4,9 +4,9 @@
   <% @companies.each do |company| %>
     <%= render company %>
     <p>
-      <%= link_to "Show this company", company %>
+      <%= link_to I18n.t('views.common.show'), company %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New company", new_company_path %>
+<%= link_to I18n.t('views.companies.index.new'), new_company_path %>

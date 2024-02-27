@@ -1,4 +1,8 @@
 pt-BR:
+  helpers:
+    submit:
+      create: "Criar %{model}"
+      update: "Atualizar %{model}"
   errors:
     messages:
       not_saved: "Registro não foi salvo"
@@ -36,3 +40,28 @@ pt-BR:
       company:
         name: "Nome"
         ceo: "CEO"
+  views:
+    common: 
+      back: "Voltar"
+      edit: "Editar"
+      destroy: "Excluir"
+      show: "Exibir"
+    companies:
+      index:
+        title: "Empresas"
+        new: "Nova Empresa"
+      new:
+        title: "Nova Empresa"
+        submit: "Criar Empresa"
+      create:
+        success: "Empresa criada com sucesso"
+        error: "Erro ao criar empresa"
+      edit:
+        title: "Editar Empresa"
+        submit: "Atualizar Empresa"
+      update:
+        success: "Empresa atualizada com sucesso"
+        error: "Erro ao atualizar empresa"
+      destroy:
+        success: "Empresa excluída com sucesso"
+        error: "Erro ao excluir empresa"
