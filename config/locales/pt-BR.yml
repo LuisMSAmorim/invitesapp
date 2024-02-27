@@ -46,6 +46,7 @@ pt-BR:
       edit: "Editar"
       destroy: "Excluir"
       show: "Exibir"
+      confirm_destroy: "Tem certeza que deseja excluir?"
     companies:
       index:
         title: "Empresas"

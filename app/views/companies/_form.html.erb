@@ -1,25 +1,25 @@
-<%= form_with(model: company) do |form| %>
+<%= form_with(model: company, class: 'company-form') do |form| %>
   <% if company.errors.any? %>
-    <div style="color: red">
+    <div class="error-messages">
       <ul>
-        <% company.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% company.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :ceo, style: "display: block" %>
-    <%= form.text_field :ceo %>
+  <div class="form-group">
+    <%= form.label :ceo, class: 'form-label' %>
+    <%= form.text_field :ceo, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= form.submit I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.company')), class: 'submit-link' %>
   </div>
 <% end %>

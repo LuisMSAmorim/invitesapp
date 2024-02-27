@@ -1,9 +1,9 @@
-<h1>New company</h1>
+<h1><%= I18n.t('views.companies.index.new') %></h1>
 
 <%= render "form", company: @company %>
 
 <br>
 
-<div>
-  <%= link_to I18n.t('views.common.back'), companies_path %>
+<div class="back-link">
+  <%= link_to I18n.t('views.common.back'), companies_path, class: 'btn-back' %>
 </div>
