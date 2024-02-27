@@ -10,9 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <%= render partial: 'layouts/header'%>
+
   <body>
     <p class="notice"><%= notice %></p> 
     <p class="alert"><%= alert %></p> 
-    <%= yield %>
+    <div class="application-generals">
+      <%= yield %>
+    </div>
   </body>
 </html>

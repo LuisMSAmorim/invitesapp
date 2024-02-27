@@ -1,0 +1,40 @@
+.application-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: red;
+  padding: 15px;
+}
+
+.application-header > h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+.application-menu {
+  display: flex;
+  column-gap: 15px;
+}
+
+.application-menu > a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  color: white;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
