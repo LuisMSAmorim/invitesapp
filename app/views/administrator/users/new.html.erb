@@ -1,9 +1,9 @@
-<h1>Novo administrador</h1>
+<h1><%= I18n.t('views.administrators.users.new.title') %></h1>
 
 <%= render "form", user: @user %>
 
 <br>
 
-<div>
-  <%= link_to "Voltar", administrator_users_path %>
+<div class="back-link">
+  <%= link_to I18n.t('views.common.back'), administrator_users_path, class: 'btn-back' %>
 </div>

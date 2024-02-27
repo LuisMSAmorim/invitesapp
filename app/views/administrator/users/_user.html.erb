@@ -1,8 +1,6 @@
 <div class="user" id="<%= dom_id user %>">
   <h2><%= user.email %></h2>
   <div class="user-actions">
-    <%= link_to "Exibir", administrator_user_path(user), class: "user-action-link" %>
-    <%= link_to "Editar", edit_administrator_user_path(user), class: "user-action-link" %>
-    <%= link_to "Deletar", administrator_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Você tem certeza?" }, class: "user-action-link" %>
+    <%= link_to I18n.t('views.common.show'), administrator_user_path(user), class: "btn-show" %>
   </div>
 </div>
