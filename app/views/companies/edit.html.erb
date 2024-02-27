@@ -1,0 +1,10 @@
+<h1><%= I18n.t('views.companies.edit.title') %></h1>
+
+<%= render "form", company: @company %>
+
+<br>
+
+<div class="company-actions">
+  <%= link_to I18n.t('views.common.show'), @company, class: 'btn-show' %> |
+  <%= link_to I18n.t('views.common.back'), companies_path, class: 'btn-back' %>
+</div>
