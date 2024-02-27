@@ -1,4 +1,9 @@
 .company-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 15%;
+  justify-content: center;
+  align-items: flex-start;
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;

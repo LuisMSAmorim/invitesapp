@@ -3,9 +3,6 @@
 <div id="companies" class="companies-list">
   <% @companies.each do |company| %>
     <%= render company, company: company %>
-    <p>
-      <%= link_to I18n.t('views.common.show'), company, class: 'show-link' %>
-    </p>
   <% end %>
 </div>
 

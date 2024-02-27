@@ -3,6 +3,7 @@ pt-BR:
     submit:
       create: "Criar %{model}"
       update: "Atualizar %{model}"
+      generic: "Enviar"
   errors:
     messages:
       not_saved: "Registro não foi salvo"
