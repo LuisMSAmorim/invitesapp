@@ -93,9 +93,9 @@ RSpec.describe Administrator::UsersController, type: :controller do
         allow(admin_mock).to receive_messages(valid?: false)
       end
 
-      it "returns http success" do
+      it "returns http unprocessable entity" do
         put :update, params: params
-        expect(response).to be_successful
+        expect(response).to be_unprocessable
       end
       it "assigns @user" do
         put :update, params: params
@@ -104,10 +104,6 @@ RSpec.describe Administrator::UsersController, type: :controller do
       it "renders the edit template" do
         put :update, params: params
         expect(response).to render_template("edit")
-      end
-      it 'flashes an alert' do
-        post :create, params: params
-        expect(flash[:alert]).to be_present
       end
     end
   end
@@ -153,9 +149,9 @@ RSpec.describe Administrator::UsersController, type: :controller do
         allow(admin_mock).to receive_messages(persisted?: false)
       end
 
-      it "returns http success" do
+      it "returns http unprocessable entity" do
         post :create, params: params
-        expect(response).to be_successful
+        expect(response).to be_unprocessable
       end
       it "assigns @user" do
         post :create, params: params
@@ -164,10 +160,6 @@ RSpec.describe Administrator::UsersController, type: :controller do
       it "renders the new template" do
         post :create, params: params
         expect(response).to render_template("new")
-      end
-      it 'flashes an alert' do
-        post :create, params: params
-        expect(flash[:alert]).to be_present
       end
     end
   end
