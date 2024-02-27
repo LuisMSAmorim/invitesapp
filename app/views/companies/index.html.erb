@@ -1,0 +1,9 @@
+<h1><%= I18n.t('views.companies.index.title') %></h1>
+
+<div id="companies" class="companies-list">
+  <% @companies.each do |company| %>
+    <%= render company, company: company %>
+  <% end %>
+</div>
+
+<%= link_to I18n.t('views.companies.index.new'), new_company_path, class: 'new-company-link' %>
