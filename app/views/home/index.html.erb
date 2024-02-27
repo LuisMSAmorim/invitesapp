@@ -1,0 +1,8 @@
+<h1>Seja bem-vindo ao InvitesAPP</h1>
+
+<% if user_signed_in? %> 
+ <div> Seja bem-vindo <%= current_user.email %> </div> 
+  <%= button_to "Logout", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Login", new_user_session_path %> 
+<% end %>

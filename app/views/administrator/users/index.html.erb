@@ -1,0 +1,9 @@
+<h1>Administradores</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+  <% end %>
+</div>
+
+<%= link_to "Novo administrador", new_administrator_user_path, class: "new-user-link" %>

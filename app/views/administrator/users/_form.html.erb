@@ -1,0 +1,7 @@
+<% request_url = @user.new_record? ? administrator_users_path : administrator_user_path(@user) %> 
+
+<%= form_for @user, url: request_url, class: "user_sign_in_form" do |f| %>
+  <%= f.text_field :email, placeholder: "teste@email.com", class: "form_box" %>
+  <%= f.password_field :password, placeholder: "******", class: "form_box" %>
+  <%= f.submit "Enviar" %>
+<% end %>
