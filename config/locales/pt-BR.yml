@@ -1,0 +1,38 @@
+pt-BR:
+  errors:
+    messages:
+      not_saved: "Registro não foi salvo"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "não pode ficar em branco"
+              invalid: "não é válido"
+              taken: "já está em uso"
+            password:
+              blank: "não pode ficar em branco"
+              too_short: "é muito curto (mínimo de %{count} caracteres)"
+              confirmation: "não confere com a senha"
+            password_confirmation:
+              blank: "não pode ficar em branco"
+              too_short: "é muito curta (mínimo de %{count} caracteres)"
+              confirmation: "não confere com a senha"
+        company:
+          attributes:
+            name:
+              blank: "não pode ficar em branco"
+            ceo:
+              blank: "não pode ficar em branco"
+    models:
+      user: "Usuário"
+      company: "Empresa"
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+      company:
+        name: "Nome"
+        ceo: "CEO"
