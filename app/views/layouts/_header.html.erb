@@ -1,0 +1,18 @@
+<header class="application-header">
+  <h1>InvitesApp</h1>
+
+  <% if current_user %>
+    <nav class="application-menu">
+      <% if current_user.admin? %>
+        <%= link_to I18n.t('views.administrators.users.index.title'), administrator_users_path %>
+        <%= link_to I18n.t('views.companies.index.title'), companies_path %>
+      <% end %>
+      <%= link_to 'Convites', root_path %>
+    </nav>
+
+    <div class="header-user">
+      <%= current_user.email %>
+      <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout-button' %>
+    </div>
+  <% end %>
+</header>
