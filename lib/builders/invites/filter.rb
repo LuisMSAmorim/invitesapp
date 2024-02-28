@@ -19,8 +19,8 @@ module Builders
       end
 
       def with_inactivation_date(custom_date)
-        return self if custom_date.blank?
-        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ["invites.inactivated_at >= ?", custom_date])
+        custom_date = Date.today if custom_date.blank?
+        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ["invites.inactivated_at >= ? OR invites.inactivated_at IS NULL", custom_date])
         @filters.push([:where, sanitized_query])
         self
       end
