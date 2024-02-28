@@ -11,9 +11,9 @@ module Builders
         self
       end
 
-      def with_name(name)
-        return self if name.blank?
-        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ["invites.title ILIKE ?", "%#{name}%"])
+      def with_title(title)
+        return self if title.blank?
+        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ["invites.title ILIKE ?", "%#{title}%"])
         @filters.push([:where, sanitized_query])
         self
       end

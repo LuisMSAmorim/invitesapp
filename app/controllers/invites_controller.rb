@@ -80,7 +80,7 @@ class InvitesController < ApplicationController
   end
 
   def filter_params
-    params.permit(:name, :inactivation_date, :company_id)
+    params.permit(:title, :inactivation_date, :company_id)
   end
 
   def invite_params
