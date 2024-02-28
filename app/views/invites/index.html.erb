@@ -1,5 +1,12 @@
 <h1><%= I18n.t('views.invites.index.title') %></h1>
 
+<%= form_tag(invites_path, method: 'get') do %>
+  <%= text_field_tag :name, params[:name], placeholder: 'Filter by Name' %>
+  <%= collection_select(:company_id, :id, @companies, :id, :name, { include_blank: I18n.t('views.companies.index.title') }, { name: 'company_id' }) %>
+
+  <%= submit_tag 'Filter', class: 'btn-filter' %>
+<% end %>
+
 <div id="invites">
   <% @invites.each do |invite| %>
     <%= render invite %>
