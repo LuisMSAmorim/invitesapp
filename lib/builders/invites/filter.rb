@@ -12,7 +12,9 @@ module Builders
       end
 
       def with_name(name)
-        @filters.push([:where, 'companies.name ILIKE ?', "%#{name}%"]) if name.present?
+        return self if name.blank?
+        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ["companies.name ILIKE ?", "%#{name}%"])
+        @filters.push([:where, sanitized_query])
         self
       end
 
