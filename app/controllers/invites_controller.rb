@@ -6,7 +6,7 @@ class InvitesController < ApplicationController
   before_action :authorize_administrator!, except: %i[index show]
 
   def index
-    @invites = Invites::GetAll.new(current_user).call
+    @invites = Invites::GetAll.new(current_user).call(filter_params)
   end
 
   def show
@@ -77,6 +77,10 @@ class InvitesController < ApplicationController
 
   def set_companies
     @companies = Companies::GetAll.new.call
+  end
+
+  def filter_params
+    params.permit(:company_id, :name, :inactivation_date)
   end
 
   def invite_params
