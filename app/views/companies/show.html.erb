@@ -4,5 +4,5 @@
   <%= link_to I18n.t('views.common.back'), companies_path, class: 'btn-back' %>
 
   <%= link_to I18n.t('views.common.edit'), edit_company_path(@company), class: 'btn-edit' %>
-  <%= button_to I18n.t('views.common.destroy'), @company, method: :delete, class: 'btn-destroy', data: { confirm: I18n.t('views.common.confirm_destroy') } %>
+  <%= link_to I18n.t('views.common.destroy'), @company, class: 'btn-destroy', data: { turbo_method: :delete, turbo_confirm: I18n.t('views.common.confirm_destroy') } %>
 </div>

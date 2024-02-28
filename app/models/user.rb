@@ -3,4 +3,6 @@ class User < ApplicationRecord
          :validatable
 
   enum role: { user: 0, admin: 1 }
+
+  has_many :invites, dependent: :destroy
 end

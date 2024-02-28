@@ -1,0 +1,9 @@
+<h1><%= I18n.t("views.invites.new.title") %></h1>
+
+<%= render "form", invite: @invite %>
+
+<br>
+
+<div>
+  <%= link_to I18n.t('views.common.back'), invites_path, class: 'btn-back' %>
+</div>

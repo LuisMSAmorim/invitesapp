@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @user %>
 
 
 <div class="user-actions">
   <%= link_to I18n.t('views.common.back'), administrator_users_path, class: 'btn-back' %>
   <%= link_to I18n.t('views.common.edit'), edit_administrator_user_path(@user), class: "btn-edit" %>
-  <%= link_to I18n.t('views.common.destroy'), administrator_user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Você tem certeza?" }, class: "btn-destroy" %>
+  <%= link_to I18n.t('views.common.destroy'), administrator_user_path(@user), data: { turbo_method: :delete, turbo_confirm: I18n.t('views.common.confirm_destroy') }, class: "btn-destroy" %>
 </div>
