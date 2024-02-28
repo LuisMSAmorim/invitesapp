@@ -74,6 +74,7 @@ pt-BR:
       edit: "Editar"
       destroy: "Excluir"
       show: "Exibir"
+      filter: "Filtrar"
       confirm_destroy: "Tem certeza que deseja excluir?"
       confirm_inactivate: "Tem certeza que deseja inativar?"
     companies:
