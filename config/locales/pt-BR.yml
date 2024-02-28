@@ -42,8 +42,10 @@ pt-BR:
             inactivated_at:
               blank: "não pode ficar em branco"
             user:
+              required: "não pode ficar em branco"
               blank: "não pode ficar em branco"
             company:
+              required: "não pode ficar em branco"
               blank: "não pode ficar em branco"
     models:
       user: "Usuário"
