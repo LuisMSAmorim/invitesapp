@@ -1,44 +1,23 @@
 class InvitesController < ApplicationController
-  before_action :set_invite, only: %i[ show edit update destroy ]
 
-  # GET /invites or /invites.json
   def index
-    @invites = Invite.all
+    @invites = Invites::GetAll.new(current_user).call
   end
 
-  # GET /invites/1 or /invites/1.json
   def show
+    @invite = Invites::GetById.new(params[:id], current_user).call
   end
 
-  # GET /invites/new
-  def new
-    @invite = Invite.new
-  end
-
-  # GET /invites/1/edit
   def edit
+    @invite = Invites::GetById.new(params[:id], current_user).call
   end
 
-  # POST /invites or /invites.json
-  def create
-    @invite = Invite.new(invite_params)
-
-    respond_to do |format|
-      if @invite.save
-        format.html { redirect_to invite_url(@invite), notice: "Invite was successfully created." }
-        format.json { render :show, status: :created, location: @invite }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @invite.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /invites/1 or /invites/1.json
   def update
+    @invite = Invites::Update.new(params[:id], invite_params).call
+
     respond_to do |format|
       if @invite.update(invite_params)
-        format.html { redirect_to invite_url(@invite), notice: "Invite was successfully updated." }
+        format.html { redirect_to invite_url(@invite), notice: I18n.t('views.invites.update.success') }
         format.json { render :show, status: :ok, location: @invite }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,24 +26,36 @@ class InvitesController < ApplicationController
     end
   end
 
-  # DELETE /invites/1 or /invites/1.json
-  def destroy
-    @invite.destroy!
+  def new
+    @invite = Invite.new
+  end
+
+  def create
+    @invite = Invites::Create.new(invite_params).call
 
     respond_to do |format|
-      format.html { redirect_to invites_url, notice: "Invite was successfully destroyed." }
+      if @invite.save
+        format.html { redirect_to invite_url(@invite), notice: I18n.t('views.invites.create.success') }
+        format.json { render :show, status: :created, location: @invite }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @invite.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    Invites::Delete.new(params[:id]).call
+
+    respond_to do |format|
+      format.html { redirect_to invites_url, notice: I18n.t('views.invites.destroy.success') }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invite
-      @invite = Invite.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def invite_params
-      params.require(:invite).permit(:title, :description, :date, :inactivated_at, :company_id, :user_id)
-    end
+  def invite_params
+    params.require(:invite).permit(:title, :description, :date, :inactivated_at, :company_id, :user_id)
+  end
 end
