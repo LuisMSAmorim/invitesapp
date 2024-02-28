@@ -17,11 +17,13 @@ module Invites
 
     def get_all_invites
       base_query
+        .where(inactivated_at: nil)
         .all
     end
 
     def get_user_invites
       base_query
+        .where(inactivated_at: nil)
         .where(user_id: @current_user.id)
     end
   end
