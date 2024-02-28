@@ -6,7 +6,7 @@ module Invites
     end
 
     def call
-      invite = Invite.new(params)
+      invite = Invite.new(@params)
 
       invite.save
 
