@@ -33,7 +33,7 @@ module Invites
 
       Builders::Invites::Filter.new(query)
                                 .with_company_id(params[:company_id])
-                                .with_name(params[:name])
+                                .with_title(params[:title])
                                 .with_inactivation_date(params[:inactivation_date])
                                 .call
     end
