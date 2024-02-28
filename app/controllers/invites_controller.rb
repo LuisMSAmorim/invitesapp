@@ -23,7 +23,7 @@ class InvitesController < ApplicationController
     @invite = Invites::Update.new(params[:id], invite_params).call
 
     respond_to do |format|
-      if @invite.update(invite_params)
+      if @invite.valid?
         format.html { redirect_to invite_url(@invite), notice: I18n.t('views.invites.update.success') }
         format.json { render :show, status: :ok, location: @invite }
       else
@@ -56,6 +56,15 @@ class InvitesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to invites_url, notice: I18n.t('views.invites.destroy.success') }
+      format.json { head :no_content }
+    end
+  end
+
+  def inactivate
+    @invite = Invites::Update.new(params[:id], { inactivated_at: Date.today }).call
+
+    respond_to do |format|
+      format.html { redirect_to invites_url, notice: I18n.t('views.invites.inactivate.success') }
       format.json { head :no_content }
     end
   end

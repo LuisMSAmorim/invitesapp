@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :invites
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
@@ -13,4 +12,9 @@ Rails.application.routes.draw do
     resources :users
   end
   resources :companies
+  resources :invites do
+    member do
+      patch :inactivate
+    end
+  end
 end
