@@ -5,6 +5,7 @@
 
   <% if current_user.admin? %>
     <%= link_to I18n.t('views.common.edit'), edit_invite_path(@invite), class: 'btn-edit' %>
-    <%= button_to I18n.t('views.common.destroy'), @invite, method: :delete, class: 'btn-destroy', data: { confirm: I18n.t('views.common.confirm_destroy') } %>
+    <%= link_to I18n.t('views.common.destroy'), @invite, data: { turbo_method: :delete, turbo_confirm: I18n.t('views.common.confirm_destroy') }, class: 'btn-destroy' %>
+    <%= link_to I18n.t('views.invites.inactivate.inactive'), inactivate_invite_path(@invite), data: { turbo_method: :patch, turbo_confirm: I18n.t('views.common.confirm_inactivate') }, class: 'btn-destroy' %>
   <% end %>
 </div>
