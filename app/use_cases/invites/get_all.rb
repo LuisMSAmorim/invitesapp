@@ -16,11 +16,28 @@ module Invites
     private
 
     def get_all_invites
-      Invite.all
+      Invite
+      .select(selected_columns)
+      .left_joins(:company)
+      .left_joins(:user)
+      .all
     end
 
     def get_user_invites
-      Invite.where(user_id: @current_user.id)
+      Invite
+        .select(selected_columns)
+        .left_joins(:company)
+        .left_joins(:user)
+        .where(user_id: @current_user.id)
+      end
+
+    def selected_columns
+      [
+        'invites.*',
+        'companies.*',
+        'users.id as user_id',
+        'users.email as user_email'
+      ]
     end
   end
 end
