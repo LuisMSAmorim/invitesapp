@@ -1,5 +1,10 @@
 class InvitesController < ApplicationController
 
+  before_action :set_users, only: %i[new edit update create]
+  before_action :set_companies, only: %i[new edit update create]
+  before_action :authenticate_user!
+  before_action :authorize_administrator!, except: %i[index show]
+
   def index
     @invites = Invites::GetAll.new(current_user).call
   end
@@ -9,6 +14,8 @@ class InvitesController < ApplicationController
   end
 
   def edit
+    @companies = Companies::GetAll.new.call
+    @users = Users::GetAll.new.call
     @invite = Invites::GetById.new(params[:id], current_user).call
   end
 
@@ -54,6 +61,14 @@ class InvitesController < ApplicationController
   end
 
   private
+
+  def set_users
+    @users = Users::GetAll.new.call
+  end
+
+  def set_companies
+    @companies = Companies::GetAll.new.call
+  end
 
   def invite_params
     params.require(:invite).permit(:title, :description, :date, :inactivated_at, :company_id, :user_id)
