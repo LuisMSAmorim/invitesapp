@@ -33,5 +33,9 @@ RSpec.describe InvitesController, type: :routing do
     it "routes to #destroy" do
       expect(delete: "/invites/1").to route_to("invites#destroy", id: "1")
     end
+
+    it "routes to #inactivate" do
+      expect(patch: "/invites/1/inactivate").to route_to("invites#inactivate", id: "1")
+    end
   end
 end
