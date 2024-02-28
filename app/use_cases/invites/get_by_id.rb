@@ -1,5 +1,5 @@
 module Invites
-  class GetById
+  class GetById < Get
 
     def initialize(id, current_user)
       @id = id
@@ -17,11 +17,13 @@ module Invites
     private
 
     def get_invite
-      Invite.find_by!(id: @id)
+      base_query
+        .find_by!(id: @id)
     end
 
     def get_user_invite
-      Invite.find_by!(id: @id, user_id: @current_user.id)
+      base_query
+        .find_by!(id: @id, user_id: @current_user.id)
     end
   end
 end

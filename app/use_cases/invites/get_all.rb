@@ -1,5 +1,5 @@
 module Invites
-  class GetAll
+  class GetAll < Get
 
     def initialize(current_user)
       @current_user = current_user
@@ -16,28 +16,13 @@ module Invites
     private
 
     def get_all_invites
-      Invite
-      .select(selected_columns)
-      .left_joins(:company)
-      .left_joins(:user)
-      .all
+      base_query
+        .all
     end
 
     def get_user_invites
-      Invite
-        .select(selected_columns)
-        .left_joins(:company)
-        .left_joins(:user)
+      base_query
         .where(user_id: @current_user.id)
-      end
-
-    def selected_columns
-      [
-        'invites.*',
-        'companies.*',
-        'users.id as user_id',
-        'users.email as user_email'
-      ]
     end
   end
 end
