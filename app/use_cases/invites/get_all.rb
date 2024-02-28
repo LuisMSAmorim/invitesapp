@@ -17,7 +17,6 @@ module Invites
 
     def get_all_invites(params)
       query = base_query
-                .where(inactivated_at: nil)
                 .all
 
       Builders::Invites::Filter.new(query)
