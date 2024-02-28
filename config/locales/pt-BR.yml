@@ -75,6 +75,7 @@ pt-BR:
       destroy: "Excluir"
       show: "Exibir"
       confirm_destroy: "Tem certeza que deseja excluir?"
+      confirm_inactivate: "Tem certeza que deseja inativar?"
     companies:
       index:
         title: "Empresas"
@@ -133,3 +134,7 @@ pt-BR:
       destroy:
         success: "Convite excluído com sucesso"
         error: "Erro ao excluir convite"
+      inactivate:
+        success: "Convite inativado com sucesso"
+        error: "Erro ao inativar convite"
+        inactive: "Inativar"
