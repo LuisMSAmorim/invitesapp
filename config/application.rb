@@ -19,6 +19,8 @@ module App
     config.autoload_paths << Rails.root.join('use_cases')
     config.eager_load_paths << Rails.root.join('use_cases')
 
+    config.autoload_paths << Rails.root.join('builders')
+    config.eager_load_paths << Rails.root.join('builders')
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

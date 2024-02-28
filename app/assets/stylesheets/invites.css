@@ -44,3 +44,42 @@
 .invite-info p {
   margin-bottom: 8px;
 }
+
+.invite-filter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  column-gap: 10px;
+}
+
+.invite-filter > input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.invite-filter > select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.invite-filter > input[type="submit"] {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ba1b3891;
+  color: #ffffff;
+  background-color: #ea0932;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.invite-filter > input[type="submit"]:hover {
+  background-color: #ba1b38;
+}

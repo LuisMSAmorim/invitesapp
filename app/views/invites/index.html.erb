@@ -1,5 +1,7 @@
 <h1><%= I18n.t('views.invites.index.title') %></h1>
 
+<%= render partial: 'filter' %>
+
 <div id="invites">
   <% @invites.each do |invite| %>
     <%= render invite %>
