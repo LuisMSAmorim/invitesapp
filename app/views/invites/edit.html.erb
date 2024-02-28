@@ -1,10 +1,10 @@
-<h1>Editing invite</h1>
+<h1><%= I18n.t('views.invites.edit.title') %></h1>
 
 <%= render "form", invite: @invite %>
 
 <br>
 
 <div>
-  <%= link_to "Show this invite", @invite %> |
-  <%= link_to "Back to invites", invites_path %>
+  <%= link_to I18n.t('views.common.show'), @invite, class: 'btn-show' %> |
+  <%= link_to I18n.t('views.common.back'), invites_path, class: 'btn-back' %>
 </div>

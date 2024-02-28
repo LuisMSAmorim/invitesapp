@@ -1,8 +1,6 @@
 <%= form_with(model: invite) do |form| %>
   <% if invite.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(invite.errors.count, "error") %> prohibited this invite from being saved:</h2>
-
+    <div class="error-messages">
       <ul>
         <% invite.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,37 +9,32 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-actions">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+  <div class="form-actions">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
+  <div class="form-actions">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_field :date, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :inactivated_at, style: "display: block" %>
-    <%= form.date_field :inactivated_at %>
+  <div class="form-actions">
+    <%= form.label :company_id, class: 'form-label' %>
+    <%= form.collection_select :company_id, @companies, :id, :name, { prompt: I18n.t('views.companies.index.title') }, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :company_id, style: "display: block" %>
-    <%= form.text_field :company_id %>
+  <div class="form-actions">
+    <%= form.label :user_id, class: 'form-label' %>
+    <%= form.collection_select :user_id, @users, :id, :email, { prompt: I18n.t('views.invites.new.users') }, class: 'form-input' %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= form.submit I18n.t('helpers.submit.generic'), class: 'submit-link' %>
   </div>
 <% end %>

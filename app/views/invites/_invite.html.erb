@@ -1,32 +1,33 @@
-<div id="<%= dom_id invite %>">
+<div id="<%= dom_id invite %>" class="invite-info">
   <p>
-    <strong>Title:</strong>
+    <strong><%= I18n.t('activerecord.attributes.invite.title') %>:</strong>
     <%= invite.title %>
   </p>
 
   <p>
-    <strong>Description:</strong>
+    <strong><%= I18n.t('activerecord.attributes.invite.description') %>:</strong>
     <%= invite.description %>
   </p>
 
   <p>
-    <strong>Date:</strong>
+    <strong><%= I18n.t('activerecord.attributes.invite.date') %>:</strong>
     <%= invite.date %>
   </p>
 
+  <% if invite.inactivated_at %>
+    <p>
+      <strong><%= I18n.t('activerecord.attributes.invite.inactivated_at') %>:</strong>
+      <%= invite.inactivated_at %>
+    </p>
+  <% end %>
+
   <p>
-    <strong>Inactivated at:</strong>
-    <%= invite.inactivated_at %>
+    <strong><%= I18n.t('activerecord.attributes.invite.company') %>:</strong>
+    <%= invite.company_name %>
   </p>
 
   <p>
-    <strong>Company:</strong>
-    <%= invite.company_id %>
+    <strong><%= I18n.t('activerecord.attributes.invite.user') %>:</strong>
+    <%= invite.user_email %>
   </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= invite.user_id %>
-  </p>
-
 </div>

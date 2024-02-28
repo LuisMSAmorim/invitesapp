@@ -44,7 +44,7 @@ pt-BR:
             user:
               required: "não pode ficar em branco"
               blank: "não pode ficar em branco"
-            company:
+            company:  
               required: "não pode ficar em branco"
               blank: "não pode ficar em branco"
     models:
@@ -66,6 +66,8 @@ pt-BR:
         inactivated_at: "Inativado em"
         user: "Usuário"
         company: "Empresa"
+        user_id: "Usuário"
+        company_id: "Empresa"
   views:
     common: 
       back: "Voltar"
@@ -118,6 +120,7 @@ pt-BR:
       new:
         title: "Novo Convite"
         submit: "Criar Convite"
+        users: "Usuários"
       create:
         success: "Convite criado com sucesso"
         error: "Erro ao criar convite"
