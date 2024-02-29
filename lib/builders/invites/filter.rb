@@ -7,20 +7,23 @@ module Builders
       end
 
       def with_company_id(company_id)
-        @filters.push([:where, company_id: company_id]) if company_id.present?
+        @filters.push([:where, { company_id: }]) if company_id.present?
         self
       end
 
       def with_title(title)
         return self if title.blank?
-        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ["invites.title ILIKE ?", "%#{title}%"])
+
+        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ['invites.title ILIKE ?', "%#{title}%"])
         @filters.push([:where, sanitized_query])
         self
       end
 
       def with_inactivation_date(custom_date)
         custom_date = Date.today if custom_date.blank?
-        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array, ["invites.inactivated_at >= ? OR invites.inactivated_at IS NULL", custom_date])
+        sanitized_query = ActiveRecord::Base.send(:sanitize_sql_array,
+                                                  ['invites.inactivated_at >= ? OR invites.inactivated_at IS NULL',
+                                                   custom_date])
         @filters.push([:where, sanitized_query])
         self
       end

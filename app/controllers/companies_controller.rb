@@ -1,5 +1,4 @@
 class CompaniesController < ApplicationController
-  
   before_action :authenticate_user!
   before_action :authorize_administrator!
 
@@ -54,7 +53,7 @@ class CompaniesController < ApplicationController
 
   private
 
-    def company_params
-      params.require(:company).permit(:name, :ceo)
-    end
+  def company_params
+    params.require(:company).permit(:name, :ceo)
+  end
 end

@@ -1,5 +1,4 @@
 class Administrator::UsersController < ApplicationController
-
   before_action :authenticate_user!
   before_action :authorize_administrator!
 
@@ -20,7 +19,9 @@ class Administrator::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.valid?
-        format.html { redirect_to administrator_users_path, notice: I18n.t('views.administrators.users.update.success') }
+        format.html do
+          redirect_to administrator_users_path, notice: I18n.t('views.administrators.users.update.success')
+        end
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -38,7 +39,9 @@ class Administrator::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.persisted?
-        format.html { redirect_to administrator_users_path, notice: I18n.t('views.administrators.users.created.success') }
+        format.html do
+          redirect_to administrator_users_path, notice: I18n.t('views.administrators.users.created.success')
+        end
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -1,6 +1,5 @@
 module Companies
   class Update
-
     def initialize(id, params)
       @id = id
       @params = params

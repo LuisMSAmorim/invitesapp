@@ -89,7 +89,7 @@ RSpec.describe InvitesController, type: :controller do
       expect(response).to render_template('edit')
     end
   end
-  
+
   describe 'PATCH #update' do
     let(:valid_params) { attributes_for(:invite, title: 'Updated Title') }
 
