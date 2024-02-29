@@ -1,7 +1,8 @@
 Passo para setup do projeto:
 
-- git clone git@github.com:LuisMSAmorim/invitesapp.git
-- $ docker-compose up --build
+- $ git clone git@github.com:LuisMSAmorim/invitesapp.git
+- $ cd invitesapp
+- $ sudo docker-compose up --build
 - abra uma nova aba no terminal e execute o comando: make bash
 - $ bin/rails db:create
 - $ bin/rails db:migrate
