@@ -1,6 +1,5 @@
 module Administrators
   class Delete
-
     def initialize(id)
       @id = id
     end

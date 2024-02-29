@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Invites::GetById, type: :use_case do
-
   let(:admin_user) { create(:user, :admin) }
   let(:regular_user) { create(:user) }
   let(:invite) { create(:invite) }

@@ -1,6 +1,5 @@
 module Invites
   class GetById < Get
-
     def initialize(id, current_user)
       @id = id
       @current_user = current_user

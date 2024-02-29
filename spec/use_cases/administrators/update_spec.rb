@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Administrators::Update, type: :use_case do
-
   let(:admin) { create(:user, :admin) }
   let(:params) { { email: 'johndoe@email.com', password: '123Test@!#' } }
 
@@ -19,9 +18,9 @@ RSpec.describe Administrators::Update, type: :use_case do
     context 'when the params are invalid' do
       let(:params) { { email: '', password: '' } }
       it 'dont update the admin' do
-        expect {
+        expect do
           described_class.new(admin.id, params).call
-        }.to_not change { admin.reload.email }
+        end.to_not(change { admin.reload.email })
       end
     end
     context 'when the user is not an admin' do

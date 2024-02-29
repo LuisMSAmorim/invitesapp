@@ -1,6 +1,5 @@
 module Invites
   class Create
-
     def initialize(params)
       @params = params
     end

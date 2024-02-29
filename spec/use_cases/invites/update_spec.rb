@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Invites::Update, type: :use_case do
-
   let(:invite) { create(:invite) }
   let(:valid_params) { { title: 'Updated Title', description: 'Updated Description', date: Date.tomorrow } }
   let(:invalid_params) { { title: '', description: '', date: nil } }

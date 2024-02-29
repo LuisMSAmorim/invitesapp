@@ -1,6 +1,5 @@
 module Companies
   class Create
-
     def initialize(params)
       @params = params
     end

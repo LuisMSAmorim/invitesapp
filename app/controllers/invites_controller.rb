@@ -1,5 +1,4 @@
 class InvitesController < ApplicationController
-
   before_action :set_users, only: %i[new edit update create]
   before_action :set_companies, only: %i[new edit update create index]
   before_action :authenticate_user!

@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Invites::Create, type: :use_case do
-
   let(:user) { create(:user) }
   let(:company) { create(:company) }
 
-  let(:valid_params) { { title: 'Event Title', description: 'Event Description', date: Date.today, user_id: user.id, company_id: company.id } }
+  let(:valid_params) do
+    { title: 'Event Title', description: 'Event Description', date: Date.today, user_id: user.id,
+      company_id: company.id }
+  end
   let(:invalid_params) { { title: '', description: '', date: nil, user_id: nil, company_id: nil } }
 
   subject { described_class.new(valid_params).call }
