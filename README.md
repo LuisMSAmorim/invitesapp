@@ -12,3 +12,4 @@ Para rodar os testes:
 - $ bin/rails db:migrate RAILS_ENV=test
 - $ rspec
   
+A aplicação estará rodando na porta 3001 :)
