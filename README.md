@@ -14,3 +14,7 @@ Para rodar os testes:
 - $ rspec
   
 A aplicação estará rodando na porta 3001 :)
+
+Para acessar a aplicação com perfil de administrador, utilize o login a seguir:
+- email: admin@email.com
+- senha: ABC123456!#
