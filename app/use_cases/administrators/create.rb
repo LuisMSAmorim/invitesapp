@@ -1,6 +1,5 @@
 module Administrators
   class Create
-
     def initialize(params)
       @params = params
     end

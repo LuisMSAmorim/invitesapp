@@ -12,4 +12,9 @@ Rails.application.routes.draw do
     resources :users
   end
   resources :companies
+  resources :invites do
+    member do
+      patch :inactivate
+    end
+  end
 end

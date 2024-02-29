@@ -1,0 +1,40 @@
+<%= form_with(model: invite) do |form| %>
+  <% if invite.errors.any? %>
+    <div class="error-messages">
+      <ul>
+        <% invite.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-input' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.text_area :description, class: 'form-input' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_field :date, class: 'form-input' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.label :company_id, class: 'form-label' %>
+    <%= form.collection_select :company_id, @companies, :id, :name, { prompt: I18n.t('views.companies.index.title') }, class: 'form-input' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.label :user_id, class: 'form-label' %>
+    <%= form.collection_select :user_id, @users, :id, :email, { prompt: I18n.t('views.invites.new.users') }, class: 'form-input' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit I18n.t('helpers.submit.generic'), class: 'submit-link' %>
+  </div>
+<% end %>

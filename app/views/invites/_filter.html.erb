@@ -1,0 +1,7 @@
+<%= form_tag(invites_path, method: 'get', class: 'invite-filter') do %>
+  <%= text_field_tag :title, params[:title], placeholder: I18n.t('activerecord.attributes.invite.title') %>
+  <%= collection_select(:company_id, :id, @companies, :id, :name, { include_blank: I18n.t('views.companies.index.title') }, { name: 'company_id' }) %>
+  <%= date_field_tag :inactivation_date, params[:inactivation_date], placeholder: 'Filter by Inactivation Date' %>
+
+  <%= submit_tag I18n.t('views.common.filter'), class: 'btn-filter' %>
+<% end %>

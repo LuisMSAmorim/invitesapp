@@ -1,0 +1,18 @@
+AllCops:
+  TargetRubyVersion: 3.1.0
+  TargetRailsVersion: 7.1.0
+  Exclude:
+    - db/*
+    - db/migrate/*
+    - db/schema.rb
+    - log/*
+    - config/*
+    - config/environments/*
+    - config/initializers/*
+    - config/locales/*
+    - bin/*
+    - Gemfile
+    - Rakefile
+    - config.ru
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb

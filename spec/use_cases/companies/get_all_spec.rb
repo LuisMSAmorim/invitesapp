@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Companies::GetAll, type: :use_case do
-
   let(:company) { create(:company) }
 
   subject { described_class.new.call }

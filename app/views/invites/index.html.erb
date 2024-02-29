@@ -1,0 +1,16 @@
+<h1><%= I18n.t('views.invites.index.title') %></h1>
+
+<%= render partial: 'filter' %>
+
+<div id="invites">
+  <% @invites.each do |invite| %>
+    <%= render invite %>
+    <p>
+      <%= link_to I18n.t('views.common.show'), invite, class: 'btn-show' %>
+    </p>
+  <% end %>
+</div>
+
+<% if current_user.admin? %>
+  <%= link_to I18n.t('views.invites.index.new'), new_invite_path, class: 'new-invite-link' %>
+<% end %>

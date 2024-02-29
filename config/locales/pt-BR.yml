@@ -7,6 +7,7 @@ pt-BR:
   errors:
     messages:
       not_saved: "Registro não foi salvo"
+      record_invalid: "Registro inválido"
   activerecord:
     errors:
       models:
@@ -30,9 +31,26 @@ pt-BR:
               blank: "não pode ficar em branco"
             ceo:
               blank: "não pode ficar em branco"
+        invite:
+          attributes:
+            title:
+              blank: "não pode ficar em branco"
+            description:
+              blank: "não pode ficar em branco"
+            date:
+              blank: "não pode ficar em branco"
+            inactivated_at:
+              blank: "não pode ficar em branco"
+            user:
+              required: "não pode ficar em branco"
+              blank: "não pode ficar em branco"
+            company:  
+              required: "não pode ficar em branco"
+              blank: "não pode ficar em branco"
     models:
       user: "Usuário"
       company: "Empresa"
+      invite: "Convite"
     attributes:
       user:
         email: "E-mail"
@@ -41,13 +59,24 @@ pt-BR:
       company:
         name: "Nome"
         ceo: "CEO"
+      invite:
+        title: "Título"
+        description: "Descrição"
+        date: "Data"
+        inactivated_at: "Inativado em"
+        user: "Usuário"
+        company: "Empresa"
+        user_id: "Usuário"
+        company_id: "Empresa"
   views:
     common: 
       back: "Voltar"
       edit: "Editar"
       destroy: "Excluir"
       show: "Exibir"
+      filter: "Filtrar"
       confirm_destroy: "Tem certeza que deseja excluir?"
+      confirm_inactivate: "Tem certeza que deseja inativar?"
     companies:
       index:
         title: "Empresas"
@@ -86,3 +115,27 @@ pt-BR:
         destroy:
           success: "Administrador excluído com sucesso"
           error: "Erro ao excluir administrador"      
+    invites:
+      index:
+        title: "Convites"
+        new: "Novo Convite"
+      new:
+        title: "Novo Convite"
+        submit: "Criar Convite"
+        users: "Usuários"
+      create:
+        success: "Convite criado com sucesso"
+        error: "Erro ao criar convite"
+      edit:
+        title: "Editar Convite"
+        submit: "Atualizar Convite"
+      update:
+        success: "Convite atualizado com sucesso"
+        error: "Erro ao atualizar convite"
+      destroy:
+        success: "Convite excluído com sucesso"
+        error: "Erro ao excluir convite"
+      inactivate:
+        success: "Convite inativado com sucesso"
+        error: "Erro ao inativar convite"
+        inactive: "Inativar"

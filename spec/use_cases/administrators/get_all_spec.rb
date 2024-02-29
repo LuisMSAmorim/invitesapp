@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Administrators::GetAll, type: :use_case do
-
   let(:admin) { create(:user, :admin) }
   let(:admin2) { create(:user, :admin) }
   let(:user) { create(:user) }

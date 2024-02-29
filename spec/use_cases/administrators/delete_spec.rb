@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Administrators::Delete, type: :use_case do
-
   let(:admin) { create(:user, :admin) }
   let(:user) { create(:user) }
 
